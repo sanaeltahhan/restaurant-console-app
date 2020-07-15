@@ -1,5 +1,6 @@
 package dev.service;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import dev.dao.PlatDaoMemoire;
+import dev.exception.PlatException;
 
 
 
@@ -26,6 +28,15 @@ public class PlatServiceVersion2IntegrationTest {
 		platServiceV2.ajouterPlat("chocolat", 4500);
 		
 		assertEquals(1, platServiceV2.listerPlats().size());
+
+	}
+	
+	@Test
+	void ajouterPlatInvalide() {
+		
+		assertThatThrownBy (() -> platServiceV2.ajouterPlat("ch", 4500)).isInstanceOf(PlatException.class)
+		.hasMessage("un plat doit avoir un nom de plus de 5 caractères");
+		
 
 	}
 	
