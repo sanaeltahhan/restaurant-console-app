@@ -36,9 +36,11 @@ public class PlatDaoMemoireTest {
 		// TODO
         List<Plat> resultat = platDaoMemoire.listerPlats();
         
+        int tailleInitial = resultat.size();
+        
         platDaoMemoire.ajouterPlat("pizza", 2000);
         
-        assertEquals(1, resultat.size());
+        assertEquals(tailleInitial+1, resultat.size());
         
         
 
