@@ -27,11 +27,6 @@ public class PlatDaoJdbcIntegrationTest {
         jdbcTemplate = new JdbcTemplate(ds);
     }*/
 
-
-	
-	@BeforeEach
-	void setUp() {
-	}
 	
 	@Test
 	public void listerPlatsNonVide() {
